@@ -19,4 +19,4 @@ venv
 migrations
 data-dev.sqlite
 env
-.vscode
+
