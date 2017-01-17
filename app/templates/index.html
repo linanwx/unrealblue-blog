@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% import 'include/_macros.html' as macros %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <div class="container">
+
+        </div>
+    </div>
+    <div class="container">
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </div>
+        {% endfor %}
+        <h1>
+            你好,
+            {% if current_user.is_authenticated %}
+                {{ current_user.username }}
+            {% else %}
+                请先登陆
+            {% endif %}
+        </h1>
+        <div class="post-tabs">
+            <ul class="nav nav-tabs">
+                <li {% if not show_followed %}class="active"{% endif %}>
+                    <a href="{{ url_for('main.show_all') }}">所有文章</a>
+                </li>
+                {% if current_user.is_authenticated %}
+                <li {% if show_followed %}class="active"{% endif %}>
+                    <a href="{{ url_for('main.show_followed') }}">我的关注</a>
+                </li>
+                {% endif %}
+            </ul>
+            {% include 'include/_post.html' %}
+        </div>
+        <div class="pagination">
+            {{ macros.pagination_widget(pagination, 'main.index') }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    {{ pagedown.include_pagedown() }}
+{% endblock %}
+
