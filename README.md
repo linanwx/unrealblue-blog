@@ -32,4 +32,4 @@
   * `python manager.py db upgrade`(更新数据库，第一次使用该命令会新建一个数据库data-dev.sqlite)
   
 6. 部署程序， `python manager.py deploy`
-7. 在本地运行程序, `python manager.py runserver`打开http://127.0.0.1:5000 端口查看，按Ctrl+C退出程序。
+7. 在本地运行程序, `python manager.py runserver`打开 http://127.0.0.1:5000 端口查看，按Ctrl+C退出程序。
