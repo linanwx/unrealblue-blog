@@ -10,12 +10,10 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-6">
-                    {{ form.body(only_input=True, rows=25, class="form-control") }}
+                    {{ form.body(only_input=True, class="form-control") }}
                 </div>
-                <div class="col-md-6">
-                    <div style="background:whitesmoke", item-height="200px">
-                        {{ form.body(only_preview=True ) }}
-                    </div>
+                <div class="col-md-6" > 
+                    {{ form.body(only_preview=True ) }}
                 </div>
             </div>
         </div>
@@ -26,36 +24,23 @@
 </div>
 <style>
 .flask-pagedown-preview {
-    border: 1px dotted black;
-    background-color: #f0f0f0;
+    background-color: whitesmoke;
     height:500px;
+    /*overflow:scroll;*/
+    overflow-x:hidden;
+    overflow-y: auto;
+    
 }
-</style>
-<!--<div class="container">
-    <div class="edit_article">
-        <form action="" method="post" class="form" role="form">
-            {{ form.hidden_tag() }}
-            <div class="form-group  required">
-                {{ form.title(id="title", class="form-control", placeholder=form.title.label.text )}}
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-6">
-                        {{ form.body(only_input=True, class="form-control", placeholder=form.body.label.text, rows=10) }}
-                    </div>
-                    <div class="col-md-6">
-                        {{ form.body(only_preview=True) }}
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                {{ form.submit(class="btn btn-default") }}
-            </div>
+#flask-pagedown-body{
+    height:500px;
+    resize:none;
+}
 
-        </form>
-    </div>
-</div>-->
+
+</style>
 {% endblock %}
+
+
 
 {% block scripts %}
     {{ super() }}
