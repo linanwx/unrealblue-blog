@@ -2,12 +2,16 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block content %}
-<div class="container">
-    <div class="container-fluid">
+
+<div class="container-fluid">
+    <form method="post" class="form" role="form">
+        {{ form.hidden_tag() }}
         <div class="form-group">
+            {{ form.title.label }}
             {{ form.title(id="title", class="form-control" )}}
         </div>
         <div class="form-group">
+            {{ form.body.label }}
             <div class="row">
                 <div class="col-md-6">
                     {{ form.body(only_input=True, class="form-control") }}
@@ -20,8 +24,9 @@
         <div class="form-group">
             {{ form.submit(class="btn btn-default") }}
         </div>
-    </div>
+    </form>
 </div>
+
 <style>
 .flask-pagedown-preview {
     background-color: whitesmoke;
@@ -38,6 +43,7 @@
 
 
 </style>
+
 {% endblock %}
 
 
