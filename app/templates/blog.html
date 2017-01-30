@@ -13,13 +13,19 @@
         <div class="form-group">
             {{ form.body.label }}
             <div class="row">
-                <div class="col-md-6">
-                    {{ form.body(only_input=True, class="form-control") }}
+                <div class="col-md-6" >      
+                     <div class="well form-control", style="height: 500px;">
+                    {{ form.body(only_input=True, style="height: 100%;width:100%;") }}      
+                    </div>  
+                                 
                 </div>
                 <div class="col-md-6" > 
-                    {{ form.body(only_preview=True ) }}
+                    <div class="well", style="height: 500px;">
+                    {{ form.body(only_preview=True) }}    
+                    </div>               
                 </div>
             </div>
+            
         </div>
         <div class="form-group">
             {{ form.submit(class="btn btn-default") }}
@@ -28,17 +34,23 @@
 </div>
 
 <style>
-.flask-pagedown-preview {
-    background-color: whitesmoke;
-    height:500px;
-    overflow-x:hidden;
-    overflow-y: auto;
-    
-}
+
 #flask-pagedown-body{
-    height:500px;
-    resize:none;
+    border-style: none;
+    resize: none;
 }
+
+.flask-pagedown-preview{
+    
+    overflow-x:hidden;
+    overflow-y: auto;   
+    height: 100%;
+}
+.flask-pagedown{
+    height: 100%;
+}
+
+
 </style>
 
 {% endblock %}

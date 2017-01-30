@@ -24,7 +24,10 @@
             </div>
         {% endfor %}
         <form method="post">
+            <div class="well bs-component">
             {{ wtf.quick_form(form) }}
+            </div>
         </form>
     </div>
+    
 {% endblock %}
