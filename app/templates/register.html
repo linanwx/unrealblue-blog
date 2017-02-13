@@ -1,33 +1,29 @@
-{% extends 'base.html' %}
-{% import 'bootstrap/wtf.html' as wtf %}
-
-{% block head %}
-    {{ super() }}
-    <style type="text/css">
-        #registerlength {
-            max-width: 600px; 
-        }
-    </style>
-{% endblock %}
-
-{% block content %}
-    <div class="page-header">
-        <div class="container">
-            <h1>{{ title }}</h1>
-        </div>
-    </div>
+{% extends 'base.html' %} 
+{% import 'bootstrap/wtf.html' as wtf %} 
+{% block title %}注册{% endblock %} 
+{% block head %} {{ super() }}
+<style type="text/css">
+    #registerlength {
+        max-width: 600px;
+    }
+</style>
+{% endblock %} {% block content %}
+<div class="page-header">
     <div class="container">
-        {% for message in get_flashed_messages() %}
-            <div class="alert alert-warning">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                {{ message }}
-            </div>
-        {% endfor %}
-        <form method="post">
-            <div class="well bs-component">
-            {{ wtf.quick_form(form) }}
-            </div>
-        </form>
+        <h1>注册</h1>
     </div>
-    
+</div>
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button> {{ message }}
+    </div>
+    {% endfor %}
+    <form method="post">
+        <div class="well bs-component">
+            {{ wtf.quick_form(form) }}
+        </div>
+    </form>
+</div>
+
 {% endblock %}

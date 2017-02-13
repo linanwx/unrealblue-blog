@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% block title %}个人资料{% endblock %}
+{% block content %}
 <div class="container">
     <div class="row">
         {% for message in get_flashed_messages() %}

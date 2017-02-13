@@ -18,7 +18,7 @@ def login():
             login_user(user, form.remember_me.data)
             return redirect(url_for('main.index'))
         flash(u'帐号或者密码错误')
-    return render_template('login.html', title=u'登陆', form=form)
+    return render_template('login.html', form=form)
 
 @auth.route('/logout', methods=['GET', 'POST'])
 @login_required
@@ -43,7 +43,7 @@ def register():
         flash(u'有一份邮件已经发往您的邮箱')
         return redirect(url_for('auth.login'))    # 这一步一直有问题，无法重定向，直接跳到下面去了
     else:
-        return render_template('register.html', title=u'注册', form=form)
+        return render_template('register.html', form=form)
 
 @auth.route('/confirm/<token>')
 @login_required
