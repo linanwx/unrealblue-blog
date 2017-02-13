@@ -11,6 +11,7 @@
     </div>
 </div>
 <div class="container">
+    <div class="row">
     {% for message in get_flashed_messages() %}
     <div class="alert alert-warning">
         <button type="button" class="close" data-dismiss="alert">&times;</button> {{ message }}
@@ -21,5 +22,6 @@
             {{ wtf.quick_form(form) }}
         </div>
     </form>
+    </div>
 </div>
 {% endblock %}
