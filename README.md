@@ -19,11 +19,13 @@
 1. 安装virtualenv python虚拟环境，` pip install virtualenv ` 或者 `pip3 install virtualenv` 。然后使用virtualenv在一个合适的目录建立venv环境` virtualenv venv `，
 2. 激活virtualenv环境，运行venv目录下的activate，`. venv/bin/activate`。
 3. 安装所有requirements.txt中的模块, `pip install -r requirements.txt`。如果安装太慢，你可能需要配置pip的国内源。更改pip源的方法参见pip官方页面。
-4. 导入坏境变量，编辑隐藏文件.env中的内容，进行如下修改
+4. 导入坏境变量，创建文件env，进行如下修改
 
-  * `export MAIL_USERNAME=email@example.com` (服务器发验证码用的邮箱，开启了smtp服务的邮箱账号，程序里默认使用qq邮箱，修改config文件可成其它类型邮箱)
-  * `export MAIL_PASSWORD=password` (上面邮箱的密码，注意qq邮箱使用特殊16位密码)
-  * `export FLASK_ADMIN=admin@example.com` (服务器运行后，使用该邮箱创建账号就是管理者)
+  * `MAIL_USERNAME=email@example.com` (服务器发验证码用的邮箱，开启了smtp服务的邮箱账号，程序里默认使用qq邮箱，修改config文件可成其它类型邮箱)
+  * `MAIL_PASSWORD=password` (上面邮箱的密码，注意qq邮箱使用特殊16位密码)
+  * `FLASK_ADMIN=admin@example.com` (服务器运行后，使用该邮箱创建账号就是管理者)
+  * `MAIL_SERVER=smtp.qq.com`(邮箱服务器地址)
+  * `FLASKY_MAIL_SENDER=example@foxmail.com`(发送人)
 
 5. 安装数据库迁移。输入以下命令
 

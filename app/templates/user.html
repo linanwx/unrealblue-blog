@@ -43,10 +43,10 @@
             <a href="{{ url_for('main.unfollow', username=user.username) }}" class="btn btn-default">不关注</a> {% endif %}
             {% endif %}
             <a href="{{ url_for('main.followers',username=user.username) }}">
-                粉丝人数:<span class="badge">{{ user.followers.count() - 1 }}</span>
+                <span class="badge">粉丝人数: {{ user.followers.count() - 1 }}</span>
             </a>
             <a href="{{ url_for('main.followed_by',username=user.username) }}">
-                关注人数:<span class="badge">{{ user.followed.count() - 1 }}</span>
+                <span class="badge">关注人数: {{ user.followed.count() - 1 }}</span>
             </a>
         </div>
     </div>

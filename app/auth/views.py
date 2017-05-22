@@ -33,6 +33,10 @@ def register():
     from app.auth.forms import RegisterForm
     form = RegisterForm()
     if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user is not None:
+            flash(u'该账号已经注册过了')
+            return render_template('register.html', form=form)
         user = User(username=form.username.data,
                     password=form.password.data, email=form.email.data)  # 新添加一个用户到数据库中
         db.session.add(user)
@@ -41,7 +45,9 @@ def register():
         token = user.generate_confirm_token()                            # 产生一个令牌
         send_mail(user.email, u'请确认您的帐号', 'confirm', user=user, token=token)   # 发送邮件
         flash(u'有一份邮件已经发往您的邮箱')
-        return redirect(url_for('auth.login'))    # 这一步一直有问题，无法重定向，直接跳到下面去了
+        # return redirect(url_for('auth.login'))    # 这一步一直有问题，无法重定向，直接跳到下面去了
+        login_user(user)
+        return redirect(url_for('auth.unconfirmed'))
     else:
         return render_template('register.html', form=form)
 

@@ -64,5 +64,11 @@
 
 {% block scripts %}
     {{ super() }}
-    {{ pagedown.include_pagedown() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.6.4/showdown.min.js"></script>
+    <script type="text/javascript">
+        var converter = new showdown.Converter();
+        function flask_pagedown_converter(text){
+            return converter.makeHtml(text);
+        } 
+    </script>
 {% endblock %}
