@@ -1,5 +1,6 @@
 <div class="posts" style="margin-top: 20px">
     {% for post in posts %}
+    {% if post.author.can(Permission.WRITE_ARTICLES) %}
     <!--<ul class="post well">-->
     <div class="post panel panel-default">
         <div class="panel-heading">
@@ -10,7 +11,7 @@
                 </span>
             <span class="post-author">
                     <a href="{{ url_for('main.user',username=post.author.username) }}">
-                        {{ post.author.username }}
+                        {{ post.author.username }} 
                     </a>
                 </span>
 
@@ -67,7 +68,7 @@
 
 
 
-        
+    {% endif %}    
     <!--</ul>-->
     {% endfor %}
 </div>

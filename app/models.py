@@ -15,6 +15,7 @@ class Permission:
     WRITE_ARTICLES = 0x04     # 写文章
     MODERATE_COMMENTS = 0x08  # 管理他人发表的评论
     ADMINISTRATOR = 0xff      # 管理者权限
+    FORBID = 0x00             # 禁止任何行为
 
 class Role(db.Model):
     __tablename__ = 'roles'
@@ -31,7 +32,8 @@ class Role(db.Model):
                      Permission.WRITE_ARTICLES, True),     # 只有普通用户的default为True
             'Moderare':(Permission.FOLLOW|Permission.COMMENT|
                     Permission.WRITE_ARTICLES|Permission.MODERATE_COMMENTS, False),
-            'Administrator':(0xff, False)
+            'Administrator':(0xff, False),
+            'Forbid':(0x00, False)
         }
         for r in roles:
             role = Role.query.filter_by(name=r).first()

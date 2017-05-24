@@ -63,7 +63,7 @@ def post(id):
             # 来到评论的最后一页
             return redirect(url_for('main.post', id=post.id, page=-1))
         else:
-            flash('很抱歉，您还没有登录，无法发表评论')
+            flash('很抱歉，您无法发表评论，可能由于您没有登录或者被禁止发言')
     page = request.args.get('page', 1, type=int)
     if page == -1:
         page = (post.comments.count() - 1) / 10 + 1
@@ -86,6 +86,9 @@ def blog():
         db.session.add(post)
         db.session.commit()
         return redirect(url_for('main.index'))
+    if form.validate_on_submit():
+        if not current_user.can(Permission.WRITE_ARTICLES):
+            flash("没有写博客的权限，请联系管理员")
     return render_template('blog.html', form=form)
 
 
