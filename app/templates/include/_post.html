@@ -35,13 +35,28 @@
         <div class="panel-body">
             <div class="post-title">
                 <span class="link_title">
-                        {{ post.title }}
-                    </span>
+                        <h1> {{ post.title }} </h1>
+                        <hr />
+                </span>
             </div>
             {% if post_body %}
             <div class="post-content">
                 <div class="post-body">
-                    {% if post.body_html %} {{ post.body_html|safe }} {% else %} {{ post.body }} {% endif %}
+                    {% if post.body_html %} 
+                        {{ post.body_html|safe }} 
+                    {% else %} 
+                        {{ post.body }} 
+                    {% endif %}
+                </div>
+            </div>
+            {% else %}
+            <div class="post-content">
+                <div class="post-body" style="max-height:500px; overflow: hidden;">
+                    {% if post.body_html %} 
+                        {{ post.body_html|safe }} 
+                    {% else %} 
+                        {{ post.body }} 
+                    {% endif %}
                 </div>
             </div>
             {% endif %}
@@ -56,3 +71,9 @@
     <!--</ul>-->
     {% endfor %}
 </div>
+
+<style>
+    
+.post-body img{ max-width: 100%; display: block; }  
+
+</style>
