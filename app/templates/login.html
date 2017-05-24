@@ -4,7 +4,9 @@
         max-width: 600px;
     }
 </style>
-{% endblock %} {% block content %}
+{% endblock %} 
+{% block content %}
+{{ super() }} 
 <div class="page-header">
     <div class="container">
         <h1>登录</h1>
@@ -12,11 +14,6 @@
 </div>
 <div class="container">
     <div class="row">
-    {% for message in get_flashed_messages() %}
-    <div class="alert alert-warning">
-        <button type="button" class="close" data-dismiss="alert">&times;</button> {{ message }}
-    </div>
-    {% endfor %}
     <form method="post">
         <div class="well bs-component">
             {{ wtf.quick_form(form) }}

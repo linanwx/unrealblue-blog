@@ -1,5 +1,4 @@
-Dear {{ user.username }}
-Welcome to Flask!
-To confirm your account please click on the following link:
+亲爱的 {{ user.username }},
+确认您的用户
+你可以复制下面的链接到浏览器的地址导航条上
 {{ url_for('auth.confirm', token=token, _external=True) }}
-Sincerely

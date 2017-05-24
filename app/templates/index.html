@@ -1,10 +1,7 @@
-{% extends 'base.html' %} {% import 'bootstrap/wtf.html' as wtf %} {% import 'include/_macros.html' as macros %} {% block title %}首页{% endblock %} {% block content %}
+{% extends 'base.html' %} {% import 'bootstrap/wtf.html' as wtf %} {% import 'include/_macros.html' as macros %} {% block title %}首页{% endblock %} 
+{% block content %}
+{{ super() }} 
 <div class="container">
-    {% for message in get_flashed_messages() %}
-    <div class="alert alert-warning">
-        <button type="button" class="close" data-dismiss="alert">&times;</button> {{ message }}
-    </div>
-    {% endfor %}
     <div class="page-header">
         <h1>
             你好, {% if current_user.is_authenticated %} {{ current_user.username }} {% else %} 请先登陆 {% endif %}

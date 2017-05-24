@@ -53,14 +53,17 @@ def post(id):
     post = Post.query.get_or_404(id)
     form = CommentForm()
     if form.validate_on_submit():
-        comment = Comment(body=form.body.data,
-                          post=post,
-                          author=current_user._get_current_object(),
-                          )
-        db.session.add(comment)
-        db.session.commit()
-        # 来到评论的最后一页
-        return redirect(url_for('main.post', id=post.id, page=-1))
+        if(current_user.can(Permission.COMMENT)):
+            comment = Comment(body=form.body.data,
+                            post=post,
+                            author=current_user._get_current_object(),
+                            )
+            db.session.add(comment)
+            db.session.commit()
+            # 来到评论的最后一页
+            return redirect(url_for('main.post', id=post.id, page=-1))
+        else:
+            flash('很抱歉，您还没有登录，无法发表评论')
     page = request.args.get('page', 1, type=int)
     if page == -1:
         page = (post.comments.count() - 1) / 10 + 1

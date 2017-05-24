@@ -23,7 +23,7 @@ class RegisterForm(FlaskForm):
     username = StringField(label=u'用户名', validators=[DataRequired(), Length(1, 64)],
                            id='registerlength')
     password = PasswordField(label=u'密码', validators=[DataRequired(),
-                                                      EqualTo('password2', message=u'密码必须相同')], id='registerlength')
-    password2 = PasswordField(label=u'确认密码', validators=[
-                              DataRequired()], id='registerlength')
+                                                      EqualTo('password2', message=u'两次输入的密码必须相同')], id='registerlength')
+    password2 = PasswordField(label=u'确认密码', validators=[DataRequired(),
+                                                      EqualTo('password', message=u'两次输入的密码必须相同')], id='registerlength')
     submit = SubmitField(label=u'马上注册')
