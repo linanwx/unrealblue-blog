@@ -3,35 +3,29 @@
     {% if post.author.can(Permission.WRITE_ARTICLES) %}
     <!--<ul class="post well">-->
     <div class="post panel panel-default">
-        <div class="panel-heading">
-            <span class="profile-thumbail">
-                    <a href="{{ url_for('main.user',username=post.author.username) }}">
-                        <img class="img-circle profile-thumbail" src="{{ post.author.gravatar(16) }}">
-                    </a>
+        <div class="panel-heading" style="display: flex; justify-content: space-between;">
+            <span>
+                <span class="profile-thumbail">
+                        <a href="{{ url_for('main.user',username=post.author.username) }}">
+                            <img class="img-circle profile-thumbail" src="{{ post.author.gravatar(16) }}">
+                        </a>
                 </span>
-            <span class="post-author">
-                    <a href="{{ url_for('main.user',username=post.author.username) }}">
-                        {{ post.author.username }} 
-                    </a>
+                <span class="post-author">
+                        <a href="{{ url_for('main.user',username=post.author.username) }}">
+                            {{ post.author.username }} 
+                        </a>
                 </span>
-
-            <span class="post-footer pull-right">
-                    <span class="label">{{ moment(post.timestamp).fromNow() }}</span> {% if current_user == post.author
-            %}
-
-            <span class="label label-default"><a href="{{ url_for('main.edit',id=post.id) }}">编辑</a></span> {% elif current_user.is_administrator()
-            %}
-
-            <span class="label label-default"><a href="{{ url_for('main.edit',id=post.id) }}">编辑[管理员]</a></span> {% endif
-            %}
-
-            <span class="label label-default"><a href="{{ url_for('main.post', id=post.id) }}">文章链接</a></span>
-
-
-            <span class="label label-default"><a href="{{ url_for('main.post', id=post.id) }}">{{ post.comments.count() }}个评论</a></span>
-
             </span>
-
+            <span class="post-footer">
+                <span class="label">{{ moment(post.timestamp).fromNow() }}</span> 
+                {% if current_user == post.author %}
+                <span class="label label-default"><a href="{{ url_for('main.edit',id=post.id) }}">编辑</a></span> 
+                {% elif current_user.is_administrator() %}
+                <span class="label label-default"><a href="{{ url_for('main.edit',id=post.id) }}">编辑[管理员]</a></span> 
+                {% endif %}
+                <span class="label label-default"><a href="{{ url_for('main.post', id=post.id) }}">文章链接</a></span>
+                <span class="label label-default"><a href="{{ url_for('main.post', id=post.id) }}">{{ post.comments.count() }}个评论</a></span>
+            </span>
         </div>
         <div class="panel-body">
             <div class="post-title">
