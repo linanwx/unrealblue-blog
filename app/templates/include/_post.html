@@ -36,7 +36,7 @@
             </div>
             {% if post_body %}
             <div class="post-content">
-                <div class="post-body">
+                <div class="post-body" style="overflow: hidden;">
                     {% if post.body_html %} 
                         {{ post.body_html|safe }} 
                     {% else %} 
