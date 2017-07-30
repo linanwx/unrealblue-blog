@@ -21,3 +21,4 @@ data-dev.sqlite
 env
 .vscode
 node_modules
+.DS_Store
