@@ -1,6 +1,6 @@
 ## 前言
 
-源码可直接运行，支持markdown语法，支持邮箱注册，任何问题均可参考[《Flask Web开发：基于Python的Web应用开发实战》](https://book.douban.com/subject/26274202/)。
+源码可直接运行，支持markdown语法，支持邮箱注册账号，采用质感风格，任何问题均可参考[《Flask Web开发：基于Python的Web应用开发实战》](https://book.douban.com/subject/26274202/)。
 
 博客网址：http://www.unrealblue.xin/
 
@@ -19,7 +19,7 @@
 ![响应式布局](http://otwwkzjm5.bkt.clouddn.com/17-7-31/32746142.jpg)
 
 ## 部署过程
-首先为了验证程序功能，需要在本机上部署，之后使用nginx反向代理工具，可以将端口号暴露出去，这样其他人就可以在公网访问你的博客了，之后在服务器进行同样的步骤。具体过程如下。
+首先为了验证程序功能，需要在本机上部署，若需要在服务器端运行，使用 nginx 反向代理工具，可以将端口号暴露出去，这样其他人就可以在公网访问你的博客了，具体过程如下。
 
 1. 安装virtualenv python虚拟环境，` pip install virtualenv ` 或者 `pip3 install virtualenv` 。然后使用virtualenv在一个合适的目录，例如在该项目下面建立venv环境` virtualenv venv `，
 2. 激活virtualenv环境，运行venv目录下的activate，`. venv/bin/activate`， 注意点的位置，之后你会看到命令行前面多了(venv)这个标记。
@@ -40,4 +40,4 @@
   
 6. 部署程序， `python manager.py deploy`
 7. 在本地运行程序, `python manager.py runserver`打开 http://127.0.0.1:5000 端口查看，按Ctrl+C退出程序。
-8. 如果在服务器运行，要保留数据，则可以复制数据库 migrations 文件夹以及数据库 data-dev.sqlite 到服务器，然后使用 `./venv/bin/gunicorn -w 4 -b 127.0.0.1:8080 manager:app` 此时应该可以查看8080端口显示了网页，且该端口是暴露外网的。在本地浏览器输入服务器地址，此时就可以看到博客了。
+8. 如果在服务器运行，要保留数据，则可以复制数据库 migrations 文件夹以及数据库 data-dev.sqlite 到服务器，之后请参考这篇文章进行配置，[Flask + Gunicorn + Nginx 部署](http://www.cnblogs.com/Ray-liang/p/4837850.html) ，最后输入命令 `./venv/bin/gunicorn -w 4 -b 127.0.0.1:8080 manager:app` 此时应该可以查看8080端口显示了网页，且该端口是暴露外网的。在本地浏览器输入服务器地址，此时就可以看到博客了。
